@@ -3,27 +3,27 @@ import 'package:flutter/material.dart';
 class AppColors {
   // Light Theme Colors
 
-  static const Color primary = Color(0xFF1973BE); 
+  static const Color primary = Color(0xFF090919);
   static const Color background = Color(0xFFFFFFFF);
-  static const Color textPrimary = Color(0xFF131313);
-  static const Color textSecondary = Color(0xFFA0A0A0);
-  static const Color textFieldBackground = Color(0xFFF3F3F3);
+  static const Color textPrimary = Color(0xFF282828);
+  static const Color textSecondary = Color(0xFF9D9D9D);
+  static const Color textFieldBackground = Color(0xFFFFFFFF);
   static const Color iconPrimary = Color(0xFF1C1B1F);
   static const Color iconSecondary = Color(0xFFA0A0A0);
   static const Color iconBackground = Color(0xFFE6E7EC);
-   static const Color card = Color(0xFFFFFFFF);
-   static const Color cardBackground = Color(0xFFFAFAFA);
+  static const Color card = Color(0xFFFFFFFF);
+  static const Color cardBackground = Color(0xFFFAFAFA);
   static const Color grey = Color(0xFF939393);
   static const Color border = Color(0xFFD9D9D9);
   static const Color error = Color(0xFFFF002C);
   static const Color black = Color(0xFF1C1B1F);
   static const Color white = Color(0xFFFFFFFF);
   static const Color blue = Color(0xFF4090F0);
-  static const Color destinationIconColor = Color(0xFF68C0D0); 
+  static const Color destinationIconColor = Color(0xFF68C0D0);
 
   // Dark Theme Colors
-  static const Color darkPrimary = Color(0xFF1973BE);
-  static const Color darkBackground = Color(0xFF121212);
+  static const Color darkPrimary = Color(0xFFFFFFFF);
+  static const Color darkBackground = Color(0xFF090919);
   static const Color darkTextPrimary = Color(0xFFFFFFFF);
   static const Color darkTextSecondary = Color(0xFFB0B0B0);
   static const Color darkTextFieldBackground = Color(0xFF1E1E1E);

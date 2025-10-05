@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 
 class AppThemes {
   static final ThemeData lightTheme = ThemeData(
-    fontFamily: 'Roboto',
+    fontFamily: GoogleFonts.inter().fontFamily,
     brightness: Brightness.light,
     scaffoldBackgroundColor: AppColors.background,
     cardColor: AppColors.card,
@@ -30,9 +31,7 @@ class AppThemes {
         borderSide: BorderSide(color: AppColors.border),
         borderRadius: BorderRadius.circular(8),
       ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.primary, width: 2),
-      ),
+      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.primary, width: 2)),
     ),
     iconTheme: const IconThemeData(color: AppColors.iconSecondary),
     dividerTheme: DividerThemeData(color: AppColors.border, thickness: 1),
@@ -49,7 +48,7 @@ class AppThemes {
   );
 
   static final ThemeData darkTheme = ThemeData(
-    fontFamily: 'Roboto',
+    fontFamily: GoogleFonts.inter().fontFamily,
     brightness: Brightness.dark,
     scaffoldBackgroundColor: AppColors.darkBackground,
     cardColor: AppColors.darkCard,
@@ -106,17 +105,9 @@ class AppThemes {
       color: AppColors.textPrimary,
     ),
 
-    titleMedium: TextStyle(
-      fontSize: 16,
-      fontWeight: FontWeight.w500,
-      color: AppColors.textPrimary,
-    ),
+    titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: AppColors.textPrimary),
 
-    bodySmall: TextStyle(
-      fontSize: 14,
-      fontWeight: FontWeight.w400,
-      color: AppColors.textPrimary,
-    ),
+    bodySmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: AppColors.textPrimary),
 
     labelSmall: TextStyle(
       fontSize: 14,
