@@ -5,10 +5,10 @@ import 'app_colors.dart';
 
 class AppThemes {
   static final ThemeData lightTheme = ThemeData(
-    fontFamily: GoogleFonts.inter().fontFamily,
+    fontFamily: 'Inter',
     brightness: Brightness.light,
     scaffoldBackgroundColor: AppColors.background,
-    cardColor: AppColors.card,
+    cardColor: AppColors.textSecondary,
     primaryColor: AppColors.primary,
     colorScheme: const ColorScheme.light().copyWith(
       primary: AppColors.primary,
@@ -34,7 +34,7 @@ class AppThemes {
       focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.primary, width: 2)),
     ),
     iconTheme: const IconThemeData(color: AppColors.iconSecondary),
-    dividerTheme: DividerThemeData(color: AppColors.border, thickness: 1),
+    dividerTheme: DividerThemeData(color: Color(0xff9D9D9D), thickness: 1),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         elevation: 0,
@@ -48,10 +48,10 @@ class AppThemes {
   );
 
   static final ThemeData darkTheme = ThemeData(
-    fontFamily: GoogleFonts.inter().fontFamily,
+    fontFamily: 'Inter',
     brightness: Brightness.dark,
     scaffoldBackgroundColor: AppColors.darkBackground,
-    cardColor: AppColors.darkCard,
+    cardColor: AppColors.darkTextSecondary,
     primaryColor: AppColors.darkPrimary,
     colorScheme: const ColorScheme.dark().copyWith(
       primary: AppColors.darkPrimary,
@@ -67,19 +67,9 @@ class AppThemes {
       iconTheme: IconThemeData(color: AppColors.darkIconPrimary),
     ),
     textTheme: darkTextTheme,
-    inputDecorationTheme: InputDecorationTheme(
-      filled: true,
-      fillColor: AppColors.darkTextFieldBackground,
-      border: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.darkBorder),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.darkPrimary, width: 2),
-      ),
-    ),
+
     iconTheme: const IconThemeData(color: AppColors.darkIconSecondary),
-    dividerTheme: DividerThemeData(color: AppColors.darkBorder, thickness: 1),
+    dividerTheme: DividerThemeData(color: Color(0xff9D9D9D), thickness: 1),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         elevation: 0,

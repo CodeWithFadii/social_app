@@ -31,9 +31,9 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Text(
           'Logo',
-          style: AppTextStyles.semiBoldPrimary(
+          style: AppTextStyles.regularPrimary(
             context,
-          ).copyWith(fontFamily: GoogleFonts.pacifico().fontFamily, fontSize: 55),
+          ).copyWith(fontFamily: GoogleFonts.pacifico().fontFamily, fontSize: 65),
         ),
       ),
     );

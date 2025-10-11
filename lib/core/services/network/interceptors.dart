@@ -123,7 +123,7 @@ class ApiInterceptors extends Interceptor {
     final responseData = error.response?.data;
     final storage = getIt<SecureStorageService>();
     await storage.clear();
-    Get.offAllNamed(AppRoutes.loginScreen);
+    Get.offAllNamed(AppRoutes.signInScreen);
     return AppFailure(
       _extractMessage(responseData, 'Session Expired. Please login again.'),
       statusCode: 401,

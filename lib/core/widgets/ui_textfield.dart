@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_text_styles.dart';
 
@@ -65,8 +66,8 @@ class UITextField extends StatelessWidget {
       margin: margin,
       padding: EdgeInsets.only(left: icon != null ? 14.w : 8.w, right: 8.w),
       decoration: BoxDecoration(
-        color: Theme.of(context).inputDecorationTheme.fillColor,
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(10.r),
+        border: BoxBorder.all(color: Color(0xffDADADA)),
       ),
       child: Row(
         children: [
@@ -83,25 +84,28 @@ class UITextField extends StatelessWidget {
               keyboardType: inputType ?? TextInputType.text,
               onChanged: onChanged,
               obscureText: obscure ?? false,
+              onTapUpOutside: (value) {
+                FocusScope.of(context).unfocus();
+              },
               cursorHeight: 22.h,
-              cursorColor: cursorColor ?? AppColors.primary,
+
+              cursorColor: cursorColor ?? context.theme.textTheme.bodyLarge!.color,
               style:
                   textStyle ?? AppTextStyles.mediumPrimary(context, fontSize: 16, letterSpacing: 0),
               maxLength: maxLength,
               maxLines: expandable == true ? null : 1,
               textAlign: textAlign ?? TextAlign.start,
               decoration: InputDecoration(
+                filled: true,
+                fillColor: context.theme.scaffoldBackgroundColor,
                 hintText: hint,
                 hintStyle: AppTextStyles.regularSecondary(
                   context,
                   fontSize: 16,
                   letterSpacing: 0.5,
                 ),
-                border: InputBorder.none,
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
-                errorBorder: InputBorder.none,
-                disabledBorder: InputBorder.none,
                 contentPadding: contentPadding,
                 counterText: '',
               ),

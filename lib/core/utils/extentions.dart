@@ -11,3 +11,10 @@ extension SizedBoxExtensions on num {
   /// Creates a square SizedBox (both width and height equal)
   SizedBox get squareBox => SizedBox(width: r, height: r);
 }
+
+extension ColorOpacityExtension on Color {
+  Color withCustomOpacity(double opacity) {
+    assert(opacity >= 0.0 && opacity <= 1.0);
+    return withValues(alpha: opacity);
+  }
+}
