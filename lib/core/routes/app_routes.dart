@@ -12,4 +12,17 @@ class AppRoutes {
   static const String walletScreen = '/wallet_screen';
   static const String addCardScreen = '/add_card_screen';
   static const String enableLocationScreen = '/enable_location_screen';
+  static const String dashboardScreen = '/dashboard_screen';
+  static const String createOrderScreen = '/create_order_screen';
+  static const String mapViewScreen = '/map_view_screen';
+  static const String orderDetailsScreen = '/order_details_screen';
+  static const String chatScreen = '/chat_screen';
+  static const String editProfileScreen = '/edit_profile_screen';
+  static const String providerProfileScreen = '/provider_profile_screen';
+  static const String helpCenterScreen = '/help_center_screen';
+  static const String notificationScreen = '/notification_screen';
+  static const String favouriteProvidersScreen = '/favourite_providers_screen';
+  static const String rateScreen = '/rate_screen';
+  static const String invoiceScreen = '/invoice_screen';
+  static const String rateServiceScreen = '/rate_service_screen';
 }

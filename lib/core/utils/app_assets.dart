@@ -10,6 +10,10 @@ class AppAssets {
   static const String authCoins = '$_imagePath/auth_coins.png';
   static const String bgExample1 = '$_imagePath/bg_example.1.jpg';
   static const String personImage = '$_imagePath/person.jpg';
+  static const String acBg = '$_imagePath/ac_bg.jpg';
+  static const String carpenterBg = '$_imagePath/carpenter_bg.jpg';
+  static const String electritionBg = '$_imagePath/electrition_bg.jpg';
+  static const String plumbingBg = '$_imagePath/plumbing_bg.jpg';
 
   // Icons
   static const String google = '$_iconPath/google.svg';
@@ -20,6 +24,7 @@ class AppAssets {
   static const String mail = '$_iconPath/mail.svg';
   static const String person = '$_iconPath/person.svg';
   static const String otpLoader = '$_iconPath/otp_loader.svg';
+  static const String notifications = '$_iconPath/notifications.svg';
 
   // New Icons
   static const String acRepair = '$_iconPath/ac_repair.svg';
@@ -39,6 +44,7 @@ class AppAssets {
   static const String coupen = '$_iconPath/coupen.svg';
   static const String delete = '$_iconPath/delete.svg';
   static const String dubai = '$_iconPath/dubai.svg';
+  static const String upload = '$_iconPath/upload.svg';
   static const String edit = '$_iconPath/edit.svg';
   static const String edit1 = '$_iconPath/edit_1.svg';
   static const String electrition = '$_iconPath/electrition.svg';
@@ -72,4 +78,6 @@ class AppAssets {
   static const String wallet = '$_iconPath/wallet.svg';
   static const String wallet1 = '$_iconPath/wallet_1.svg';
   static const String work = '$_iconPath/work.svg';
+  static const String bell = '$_iconPath/bell.svg';
+  static const String privacy = '$_iconPath/privacy.svg';
 }

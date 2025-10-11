@@ -37,14 +37,14 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Social App',
+          title: 'App Name',
           theme: AppThemes.lightTheme,
           darkTheme: AppThemes.darkTheme,
           themeMode: themeController.themeMode.value,
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
-          initialRoute: AppRoutes.initial,
+          initialRoute: AppRoutes.splash,
           getPages: AppPages.pages,
         );
       },

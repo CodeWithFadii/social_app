@@ -59,19 +59,21 @@ class UITextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMultiLine = (maxLines != null && maxLines! > 1) || (expandable == true);
+
     return Container(
       alignment: verticalAlign,
-      // height: maxLines == null ? null : height ?? 52.h,
-      height: height ?? 52.h,
+      height: isMultiLine ? null : height ?? 52.h, // Allow auto expansion for multi-line
       margin: margin,
-      padding: EdgeInsets.only(left: icon != null ? 14.w : 8.w, right: 8.w),
+      padding: EdgeInsets.only(left: icon != null ? 14.w : 4.w, right: 8.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
-        border: BoxBorder.all(color: Color(0xffDADADA)),
+        border: Border.all(color: const Color(0xffDADADA)),
       ),
       child: Row(
+        crossAxisAlignment: isMultiLine ? CrossAxisAlignment.start : CrossAxisAlignment.center,
         children: [
-          icon != null ? SvgPicture.asset(icon!) : leading ?? const SizedBox(),
+          if (icon != null) SvgPicture.asset(icon!) else leading ?? const SizedBox(),
           SizedBox(width: icon != null ? 18.w : 0),
           Expanded(
             child: TextField(
@@ -84,16 +86,13 @@ class UITextField extends StatelessWidget {
               keyboardType: inputType ?? TextInputType.text,
               onChanged: onChanged,
               obscureText: obscure ?? false,
-              onTapUpOutside: (value) {
-                FocusScope.of(context).unfocus();
-              },
               cursorHeight: 22.h,
-
               cursorColor: cursorColor ?? context.theme.textTheme.bodyLarge!.color,
               style:
                   textStyle ?? AppTextStyles.mediumPrimary(context, fontSize: 16, letterSpacing: 0),
               maxLength: maxLength,
-              maxLines: expandable == true ? null : 1,
+              maxLines: expandable == true ? null : maxLines ?? 1,
+              minLines: expandable == true ? 1 : null,
               textAlign: textAlign ?? TextAlign.start,
               decoration: InputDecoration(
                 filled: true,
@@ -101,12 +100,14 @@ class UITextField extends StatelessWidget {
                 hintText: hint,
                 hintStyle: AppTextStyles.regularSecondary(
                   context,
-                  fontSize: 16,
+                  fontSize: 14,
                   letterSpacing: 0.5,
                 ),
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
-                contentPadding: contentPadding,
+                contentPadding:
+                    contentPadding ??
+                    EdgeInsets.symmetric(vertical: isMultiLine ? 10.h : 0, horizontal: 4.w),
                 counterText: '',
               ),
             ),
