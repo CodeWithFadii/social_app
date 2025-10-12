@@ -9,7 +9,7 @@ import 'package:social_app/core/widgets/ui_elevated_button.dart';
 import 'package:social_app/core/widgets/ui_svg.dart';
 import 'package:social_app/core/widgets/ui_textfield.dart';
 
-import '../../../../core/utils/custom_check_box.dart';
+import '../../../../../core/utils/custom_check_box.dart';
 
 class AddCardScreen extends StatefulWidget {
   const AddCardScreen({super.key});

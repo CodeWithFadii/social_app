@@ -9,7 +9,7 @@ import 'package:social_app/core/utils/extentions.dart';
 import 'package:social_app/core/widgets/ui_elevated_button.dart';
 import 'package:social_app/core/widgets/ui_svg.dart';
 
-import '../../../../core/widgets/ui_textfield.dart';
+import '../../../../../core/widgets/ui_textfield.dart';
 
 class CreateOrderScreen extends StatelessWidget {
   const CreateOrderScreen({super.key});

@@ -8,7 +8,7 @@ import 'package:social_app/core/utils/app_assets.dart';
 import 'package:social_app/core/utils/extentions.dart';
 import 'package:social_app/core/widgets/ui_elevated_button.dart';
 
-import '../../../../core/theme/app_text_styles.dart';
+import '../../../../../core/theme/app_text_styles.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});

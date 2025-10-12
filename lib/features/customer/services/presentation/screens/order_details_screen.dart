@@ -6,9 +6,9 @@ import 'package:social_app/core/utils/app_assets.dart';
 import 'package:social_app/core/utils/extentions.dart';
 import 'package:social_app/core/widgets/ui_elevated_button.dart';
 
-import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_text_styles.dart';
-import '../../../../core/widgets/ui_svg.dart';
+import '../../../../../core/theme/app_colors.dart';
+import '../../../../../core/theme/app_text_styles.dart';
+import '../../../../../core/widgets/ui_svg.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
   const OrderDetailsScreen({super.key});

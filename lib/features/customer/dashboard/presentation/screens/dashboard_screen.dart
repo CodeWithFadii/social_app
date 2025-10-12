@@ -5,7 +5,7 @@ import 'package:social_app/core/theme/app_text_styles.dart';
 import 'package:social_app/core/utils/app_assets.dart';
 import 'package:social_app/core/utils/extentions.dart';
 import 'package:social_app/core/widgets/ui_svg.dart';
-import 'package:social_app/features/home/presentation/screens/home_screen.dart';
+import 'package:social_app/features/customer/home/presentation/screens/home_screen.dart';
 
 import '../../../activity/presentation/screens/activity_screen.dart';
 import '../../../profile/presentation/screens/profile_screen.dart';

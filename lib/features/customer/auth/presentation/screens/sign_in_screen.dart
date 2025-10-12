@@ -10,8 +10,8 @@ import 'package:social_app/core/widgets/ui_country_picker.dart';
 import 'package:social_app/core/widgets/ui_svg.dart';
 import 'package:social_app/core/widgets/ui_textfield.dart';
 
-import '../../../../core/routes/app_routes.dart';
-import '../../../../core/widgets/ui_elevated_button.dart';
+import '../../../../../core/routes/app_routes.dart';
+import '../../../../../core/widgets/ui_elevated_button.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});

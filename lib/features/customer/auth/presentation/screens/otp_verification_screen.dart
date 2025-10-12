@@ -6,9 +6,9 @@ import 'package:social_app/core/theme/app_colors.dart';
 import 'package:social_app/core/theme/app_text_styles.dart';
 import 'package:social_app/core/utils/extentions.dart';
 
-import '../../../../core/routes/app_routes.dart';
-import '../../../../core/widgets/otp_timer_widget.dart';
-import '../../../../core/widgets/ui_elevated_button.dart';
+import '../../../../../core/routes/app_routes.dart';
+import '../../../../../core/widgets/otp_timer_widget.dart';
+import '../../../../../core/widgets/ui_elevated_button.dart';
 
 class OtpVerificationScreen extends StatelessWidget {
   const OtpVerificationScreen({super.key});

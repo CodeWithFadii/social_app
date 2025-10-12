@@ -5,12 +5,12 @@ import 'package:social_app/core/routes/app_routes.dart';
 import 'package:social_app/core/utils/extentions.dart';
 import 'package:social_app/core/widgets/ui_country_picker.dart';
 
-import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_text_styles.dart';
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/widgets/ui_elevated_button.dart';
-import '../../../../core/widgets/ui_svg.dart';
-import '../../../../core/widgets/ui_textfield.dart';
+import '../../../../../core/theme/app_colors.dart';
+import '../../../../../core/theme/app_text_styles.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/widgets/ui_elevated_button.dart';
+import '../../../../../core/widgets/ui_svg.dart';
+import '../../../../../core/widgets/ui_textfield.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});

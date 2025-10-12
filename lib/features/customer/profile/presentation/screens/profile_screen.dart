@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:social_app/core/routes/app_routes.dart';
 import 'package:social_app/core/utils/extentions.dart';
 
-import '../../../../core/theme/app_text_styles.dart';
-import '../../../../core/utils/app_assets.dart';
-import '../../../../core/widgets/ui_svg.dart';
+import '../../../../../core/theme/app_text_styles.dart';
+import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/widgets/ui_svg.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
