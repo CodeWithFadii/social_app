@@ -21,7 +21,6 @@ import '../../features/services/presentation/screens/create_order_screen.dart';
 import '../../features/services/presentation/screens/map_view_screen.dart';
 import '../../features/services/presentation/screens/order_details_screen.dart';
 import '../../features/services/presentation/screens/provider_profile_screen.dart';
-import '../../features/profile/presentation/screens/notification_screen.dart';
 import '../../features/splash/presentation/screen/splash_screen.dart';
 import '../../features/auth/presentation/screens/wallet_screen.dart';
 import '../../features/auth/presentation/screens/add_card_screen.dart';

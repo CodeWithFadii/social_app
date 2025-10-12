@@ -133,9 +133,7 @@ class FavouriteProvidersScreen extends StatelessWidget {
                                             itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
                                             itemBuilder: (context, _) =>
                                                 Icon(Icons.star, color: Colors.amber),
-                                            onRatingUpdate: (rating) {
-                                              print(rating);
-                                            },
+                                            onRatingUpdate: (rating) {},
                                           ),
                                           Text(
                                             '272(reviews)',

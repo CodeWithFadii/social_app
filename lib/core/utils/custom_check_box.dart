@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../theme/app_colors.dart';
 
 class CustomCheckBox extends StatefulWidget {
   final bool isChecked; // Change to a simple bool

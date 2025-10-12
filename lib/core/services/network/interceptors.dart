@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:get/get_connect/http/src/response/response.dart' hide Response;
 import 'package:get/route_manager.dart';
 
 import '../../config/app_config.dart';

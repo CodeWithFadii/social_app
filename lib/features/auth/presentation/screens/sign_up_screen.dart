@@ -1,13 +1,10 @@
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:social_app/core/theme/app_colors.dart';
 import 'package:social_app/core/theme/app_text_styles.dart';
 import 'package:social_app/core/utils/app_assets.dart';
-import 'package:social_app/core/utils/custom_check_box.dart';
 import 'package:social_app/core/utils/extentions.dart';
-import 'package:social_app/core/widgets/ui_country_picker.dart';
 import 'package:social_app/core/widgets/ui_svg.dart';
 import 'package:social_app/core/widgets/ui_textfield.dart';
 

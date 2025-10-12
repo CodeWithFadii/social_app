@@ -15,8 +15,7 @@ class WalletScreen extends StatefulWidget {
   State<WalletScreen> createState() => _WalletScreenState();
 }
 
-class _WalletScreenState extends State<WalletScreen>
-    with SingleTickerProviderStateMixin {
+class _WalletScreenState extends State<WalletScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -43,10 +42,7 @@ class _WalletScreenState extends State<WalletScreen>
               child: Row(
                 children: [
                   Center(
-                    child: UISvg(
-                      svg: AppAssets.backButton,
-                      onTap: () => Get.back(),
-                    ),
+                    child: UISvg(svg: AppAssets.backButton, onTap: () => Get.back()),
                   ),
                   Expanded(
                     child: Center(
@@ -71,10 +67,7 @@ class _WalletScreenState extends State<WalletScreen>
                 labelColor: context.theme.textTheme.titleLarge!.color!,
                 unselectedLabelColor: AppColors.textSecondary,
                 labelStyle: AppTextStyles.boldPrimary(context, fontSize: 16),
-                unselectedLabelStyle: AppTextStyles.regularPrimary(
-                  context,
-                  fontSize: 16,
-                ),
+                unselectedLabelStyle: AppTextStyles.regularPrimary(context, fontSize: 16),
                 tabs: [
                   Tab(text: 'Activity'),
                   Tab(text: 'Wallet'),
@@ -142,28 +135,12 @@ class _WalletScreenState extends State<WalletScreen>
                 12.heightBox,
                 Row(
                   children: [
-                    Text(
-                      '2450',
-                      style: AppTextStyles.boldPrimary(context, fontSize: 32),
-                    ),
-                    Text(
-                      '.99',
-                      style: AppTextStyles.semiBoldPrimary(
-                        context,
-                        fontSize: 16,
-                      ),
-                    ),
+                    Text('2450', style: AppTextStyles.boldPrimary(context, fontSize: 32)),
+                    Text('.99', style: AppTextStyles.semiBoldPrimary(context, fontSize: 16)),
                     SizedBox(width: 8.w),
-                    Text(
-                      'USD',
-                      style: AppTextStyles.boldPrimary(context, fontSize: 17),
-                    ),
+                    Text('USD', style: AppTextStyles.boldPrimary(context, fontSize: 17)),
                     Spacer(),
-                    Image.asset(
-                      AppAssets.authCoins,
-                      height: 70.h,
-                      width: 120.w,
-                    ),
+                    Image.asset(AppAssets.authCoins, height: 70.h, width: 120.w),
                   ],
                 ),
               ],
@@ -173,17 +150,11 @@ class _WalletScreenState extends State<WalletScreen>
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Banks & Cards',
-                style: AppTextStyles.boldPrimary(context, fontSize: 18),
-              ),
+              Text('Banks & Cards', style: AppTextStyles.boldPrimary(context, fontSize: 18)),
               InkWell(
                 onTap: () => Get.toNamed(AppRoutes.addCardScreen),
                 child: Container(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 12.w,
-                    vertical: 6.h,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
                   decoration: BoxDecoration(
                     color: AppColors.secondary,
                     borderRadius: BorderRadius.circular(10.r),
@@ -233,7 +204,7 @@ class _WalletScreenState extends State<WalletScreen>
         borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withCustomOpacity(0.1),
             blurRadius: 10,
             offset: Offset(0, 4),
           ),

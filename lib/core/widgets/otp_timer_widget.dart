@@ -56,8 +56,6 @@ class _OtpTimerWidgetState extends State<OtpTimerWidget> with SingleTickerProvid
         animation: _controller,
         builder: (context, child) {
           final value = 1.0 - _controller.value;
-          final remaining = (widget.duration * value).ceil();
-
           return CustomPaint(
             painter: _OtpTimerPainter(
               progress: value,

@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import 'package:social_app/core/theme/app_colors.dart';
 import 'package:social_app/core/theme/app_text_styles.dart';
-import 'package:social_app/core/utils/app_assets.dart';
 import 'package:social_app/core/utils/extentions.dart';
-import 'package:social_app/core/widgets/ui_svg.dart';
 
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/widgets/otp_timer_widget.dart';
