@@ -200,7 +200,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
               UIElevatedButton(
                 text: 'Add Card',
                 onPressed: () {
-                  Get.toNamed(AppRoutes.enableLocationScreen);
+                  Get.back();
                 },
               ),
               16.heightBox,

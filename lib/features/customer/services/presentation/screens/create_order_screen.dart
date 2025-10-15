@@ -155,46 +155,125 @@ class PriceSlider extends StatefulWidget {
 }
 
 class _PriceSliderState extends State<PriceSlider> {
-  double value = 40; // initial value
+  double value = 40.0; // initial value
+  final double minValue = 0.0;
+  final double maxValue = 120.0;
+
+  // Thumb size should match the thumbShape values below
+  final double thumbW = 12.0;
+  final double thumbH = 24.0;
 
   @override
   Widget build(BuildContext context) {
-    return SliderTheme(
-      data: SliderTheme.of(context).copyWith(
-        activeTrackColor: context.theme.primaryColor,
-        inactiveTrackColor: context.theme.textTheme.labelSmall!.color,
-        thumbColor: context.theme.primaryColor,
-        overlayColor: Colors.transparent,
-        padding: EdgeInsets.zero,
-        trackHeight: 4.0,
-        thumbShape: const RectangularSliderThumbShape(
-          thumbWidth: 12.0,
-          thumbHeight: 24.0,
-          cornerRadius: 6.0,
+    // We'll place the min/max labels outside the Stack so they remain unaffected.
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Container to limit width if needed from parent; LayoutBuilder gives us size.
+        LayoutBuilder(
+          builder: (context, constraints) {
+            final double totalWidth = constraints.maxWidth;
+            // We add horizontal padding to Slider equal to half thumb width so the thumb center can reach both edges visually.
+            final double horizontalHandlePadding = thumbW / 2;
+
+            // trackWidth is the visual space the thumb center travels across:
+            final double trackWidth = totalWidth - (horizontalHandlePadding * 2);
+
+            // Normalized fraction of the slider
+            final double frac = (value - minValue) / (maxValue - minValue);
+
+            // x position for the label: position anchored to the thumb center.
+            final double labelLeft = horizontalHandlePadding + (frac * trackWidth) - (thumbW / 2);
+
+            return SizedBox(
+              height: 80, // enough to show tooltip + slider
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  // The Slider (with padding so track endpoints align visually)
+                  Positioned.fill(
+                    top: 28,
+                    bottom: 0,
+                    child: SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        activeTrackColor: Theme.of(context).primaryColor,
+                        inactiveTrackColor: Theme.of(context).textTheme.labelSmall?.color,
+                        thumbColor: Theme.of(context).primaryColor,
+                        overlayColor: Colors.transparent,
+                        trackHeight: 4.0,
+                        thumbShape: RectangularSliderThumbShape(
+                          thumbWidth: thumbW,
+                          thumbHeight: thumbH,
+                          cornerRadius: 6.0,
+                        ),
+                        // Provide horizontal padding so thumb center range equals [0..totalWidth]
+                        rangeThumbShape: const RoundRangeSliderThumbShape(), // not used but safe
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: horizontalHandlePadding),
+                        child: Slider(
+                          padding: EdgeInsets.zero,
+                          value: value,
+                          min: minValue,
+                          max: maxValue,
+                          onChanged: (newValue) {
+                            setState(() => value = newValue);
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // Price label above the thumb (clamped so it doesn't overflow widget)
+                  Positioned(
+                    left: labelLeft.clamp(
+                      0.0,
+                      totalWidth - 80.0,
+                    ), // 80 is approx label width; clamps prevent overflow
+                    top: 0,
+                    child: Material(
+                      // use Material so text has proper elevation & shape without needing extra widgets
+                      color: Colors.transparent,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+                        decoration: BoxDecoration(
+                          color: context.theme.primaryColor,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          '\$${value.toStringAsFixed(0)}',
+                          style: TextStyle(
+                            color: context.theme.scaffoldBackgroundColor,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Slider(
-            value: value,
-            min: 0,
-            max: 120,
-            onChanged: (newValue) {
-              setState(() {
-                value = newValue;
-              });
-            },
-          ),
-          Row(
+
+        // Spacing then min & max labels in a Row (keeps them at the sides)
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('\$0', style: TextStyle(color: Colors.grey.shade600)),
-              Text('\$120', style: TextStyle(color: Colors.grey.shade600)),
+              Text(
+                '\$${minValue.toStringAsFixed(0)}',
+                style: TextStyle(color: Colors.grey.shade600),
+              ),
+              Text(
+                '\$${maxValue.toStringAsFixed(0)}',
+                style: TextStyle(color: Colors.grey.shade600),
+              ),
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

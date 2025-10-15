@@ -67,7 +67,9 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                         UIElevatedButton(
                           text: 'Skip',
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.offAllNamed(AppRoutes.dashboardScreen);
+                          },
                           textColor: AppColors.black,
                           backgroundColor: AppColors.secondary,
                         ),

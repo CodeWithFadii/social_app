@@ -53,7 +53,7 @@ class EnableLocationScreen extends StatelessWidget {
               UIElevatedButton(
                 text: 'Allow',
                 onPressed: () {
-                  Get.toNamed(AppRoutes.dashboardScreen);
+                  Get.offAllNamed(AppRoutes.dashboardScreen);
                 },
               ),
               8.heightBox,

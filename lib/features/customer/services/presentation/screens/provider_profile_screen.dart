@@ -39,148 +39,145 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-              child: Row(
-                children: [
-                  Center(
-                    child: UISvg(svg: AppAssets.backButton, onTap: () => Get.back()),
-                  ),
-                  Expanded(
-                    child: Center(
-                      child: Text(
-                        'Profile Screen',
-                        style: AppTextStyles.boldPrimary(context, fontSize: 18),
-                      ),
-                    ),
-                  ),
-                  UISvg(svg: AppAssets.notifications, onTap: () {}, height: 38.h),
-                ],
-              ),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: Column(
-                  children: [
-                    20.heightBox,
-                    Row(
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        body: SafeArea(
+          child: NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return [
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CircleAvatar(
-                          radius: 40.h,
-                          backgroundImage: AssetImage(AppAssets.personImage),
+                        Row(
+                          children: [
+                            UISvg(svg: AppAssets.backButton, onTap: () => Get.back()),
+                            Expanded(
+                              child: Center(
+                                child: Text(
+                                  'Profile Screen',
+                                  style: AppTextStyles.boldPrimary(context, fontSize: 18),
+                                ),
+                              ),
+                            ),
+                            UISvg(svg: AppAssets.notifications, onTap: () {}, height: 38.h),
+                          ],
                         ),
-                        16.widthBox,
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
+                        20.heightBox,
+                        Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 40.h,
+                              backgroundImage: AssetImage(AppAssets.personImage),
+                            ),
+                            16.widthBox,
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'Lucy Miller',
-                                    style: AppTextStyles.boldPrimary(context, fontSize: 20),
-                                  ),
-                                  Spacer(),
                                   Row(
-                                    spacing: 8.w,
                                     children: [
-                                      UISvg(
-                                        svg: AppAssets.caseIcon,
-                                        height: 24.h,
-                                        width: 24.w,
-                                        onTap: () {},
-                                        color: context.theme.primaryColor,
+                                      Text(
+                                        'Lucy Miller',
+                                        style: AppTextStyles.boldPrimary(context, fontSize: 20),
                                       ),
-                                      12.heightBox,
-                                      UISvg(
-                                        svg: AppAssets.list,
-                                        height: 20.h,
-                                        width: 20.w,
-                                        onTap: () {},
-                                        color: context.theme.primaryColor,
+                                      Spacer(),
+                                      Row(
+                                        spacing: 8.w,
+                                        children: [
+                                          UISvg(
+                                            svg: AppAssets.caseIcon,
+                                            height: 24.h,
+                                            width: 24.w,
+                                            onTap: () {},
+                                            color: context.theme.primaryColor,
+                                          ),
+                                          12.heightBox,
+                                          UISvg(
+                                            svg: AppAssets.list,
+                                            height: 20.h,
+                                            width: 20.w,
+                                            onTap: () {},
+                                            color: context.theme.primaryColor,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
+                                  8.heightBox,
+                                  Container(
+                                    padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
+                                    decoration: BoxDecoration(
+                                      color: AppColors.secondary,
+                                      borderRadius: BorderRadius.circular(6.r),
+                                    ),
+                                    child: Text(
+                                      '@Lucy3447',
+                                      style: AppTextStyles.regularPrimary(
+                                        context,
+                                        fontSize: 12,
+                                        color: AppColors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  12.heightBox,
+                                  Text(
+                                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                                    style: AppTextStyles.regularSecondary(context, fontSize: 12),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ],
                               ),
-                              8.heightBox,
-                              Container(
-                                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
-                                decoration: BoxDecoration(
-                                  color: AppColors.secondary,
-                                  borderRadius: BorderRadius.circular(6.r),
-                                ),
-                                child: Text(
-                                  '@Lucy3447',
-                                  style: AppTextStyles.regularPrimary(
-                                    context,
-                                    fontSize: 12,
-                                    color: AppColors.black,
-                                  ),
-                                ),
-                              ),
-                              12.heightBox,
-                              Text(
-                                'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                                style: AppTextStyles.regularSecondary(context, fontSize: 12),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
+                        30.heightBox,
+                        Row(
+                          children: [
+                            Expanded(child: _buildStatCard('100+', 'Jobs Done')),
+                            12.widthBox,
+                            Expanded(child: _buildStatCard('5.0', 'Ratings', showStar: true)),
+                            12.widthBox,
+                            Expanded(child: _buildStatCard('', 'Dubai, UAE', showFlag: true)),
+                          ],
+                        ),
+                        20.heightBox,
+                        UIElevatedButton(text: 'Fast Order now', onPressed: () {}),
+                        20.heightBox,
                       ],
                     ),
-                    30.heightBox,
-                    Row(
-                      children: [
-                        Expanded(child: _buildStatCard('100+', 'Jobs Done')),
-                        12.widthBox,
-                        Expanded(child: _buildStatCard('5.0', 'Ratings', showStar: true)),
-                        12.widthBox,
-                        Expanded(child: _buildStatCard('', 'Dubai, UAE', showFlag: true)),
-                      ],
-                    ),
-                    20.heightBox,
-                    UIElevatedButton(text: 'Fast Order now', onPressed: () {}),
-                    10.heightBox,
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border(bottom: BorderSide(color: AppColors.border, width: 1)),
-                      ),
-                      child: TabBar(
-                        controller: _tabController,
-                        indicatorColor: AppColors.primary,
-                        indicatorWeight: 3,
-                        indicatorSize: TabBarIndicatorSize.label,
-                        labelColor: context.theme.primaryColor,
-                        unselectedLabelColor: AppColors.textSecondary,
-                        labelStyle: AppTextStyles.mediumPrimary(context, fontSize: 14),
-                        unselectedLabelStyle: AppTextStyles.regularPrimary(context, fontSize: 14),
-                        tabs: [
-                          Tab(text: 'Posts & Videos'),
-                          Tab(text: 'Recent'),
-                        ],
-                      ),
-                    ),
-                    20.heightBox,
-                    SizedBox(
-                      height: 400.h,
-                      child: TabBarView(
-                        controller: _tabController,
-                        children: [_buildPostsGrid(), _buildRecentGrid()],
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+                SliverPersistentHeader(
+                  pinned: true,
+                  delegate: _TabBarDelegate(
+                    TabBar(
+                      controller: _tabController,
+                      indicatorColor: AppColors.primary,
+                      indicatorWeight: 3,
+                      indicatorSize: TabBarIndicatorSize.label,
+                      labelColor: context.theme.primaryColor,
+                      unselectedLabelColor: AppColors.textSecondary,
+                      labelStyle: AppTextStyles.mediumPrimary(context, fontSize: 14),
+                      unselectedLabelStyle: AppTextStyles.regularPrimary(context, fontSize: 14),
+                      tabs: const [
+                        Tab(text: 'Posts & Videos'),
+                        Tab(text: 'Recent'),
+                      ],
+                    ),
+                  ),
+                ),
+              ];
+            },
+            body: TabBarView(
+              controller: _tabController,
+              children: [_buildPostsGrid(), _buildRecentGrid()],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -207,7 +204,7 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen>
       ),
       child: Column(
         children: [
-          if (showStar) ...[
+          if (showStar)
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -220,12 +217,11 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen>
                 4.widthBox,
                 Text(value, style: AppTextStyles.boldPrimary(context, fontSize: 18)),
               ],
-            ),
-          ] else if (showFlag) ...[
-            UISvg(svg: AppAssets.dubai, height: 28.h, width: 28.w),
-          ] else ...[
+            )
+          else if (showFlag)
+            UISvg(svg: AppAssets.dubai, height: 28.h, width: 28.w)
+          else
             Text(value, style: AppTextStyles.boldPrimary(context, fontSize: 18)),
-          ],
           8.heightBox,
           Text(
             label,
@@ -239,14 +235,14 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen>
 
   Widget _buildPostsGrid() {
     return GridView.builder(
-      physics: NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.all(16.w),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         crossAxisSpacing: 8.w,
         mainAxisSpacing: 8.h,
         childAspectRatio: 1,
       ),
-      itemCount: 12,
+      itemCount: 20,
       itemBuilder: (context, index) {
         bool isVideo = index % 3 == 1 || index % 3 == 2;
         return Container(
@@ -262,14 +258,14 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen>
 
   Widget _buildRecentGrid() {
     return GridView.builder(
-      physics: NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.all(16.w),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         crossAxisSpacing: 8.w,
         mainAxisSpacing: 8.h,
         childAspectRatio: 1,
       ),
-      itemCount: 9,
+      itemCount: 16,
       itemBuilder: (context, index) {
         return Container(
           decoration: BoxDecoration(
@@ -280,4 +276,22 @@ class _ProviderProfileScreenState extends State<ProviderProfileScreen>
       },
     );
   }
+}
+
+class _TabBarDelegate extends SliverPersistentHeaderDelegate {
+  final TabBar tabBar;
+  _TabBarDelegate(this.tabBar);
+
+  @override
+  double get minExtent => tabBar.preferredSize.height;
+  @override
+  double get maxExtent => tabBar.preferredSize.height;
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(color: context.theme.scaffoldBackgroundColor, child: tabBar);
+  }
+
+  @override
+  bool shouldRebuild(_TabBarDelegate oldDelegate) => false;
 }

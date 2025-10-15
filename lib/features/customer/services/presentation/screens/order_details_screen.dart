@@ -240,63 +240,69 @@ class TimeDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Align(
-          alignment: Alignment.center,
-          child: Text(
-            'Order Expire Time',
-            style: AppTextStyles.regularPrimary(context, weight: FontWeight.w700, fontSize: 17),
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        Get.toNamed(AppRoutes.invoiceScreen);
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              'Order Expire Time',
+              style: AppTextStyles.regularPrimary(context, weight: FontWeight.w700, fontSize: 17),
+            ),
           ),
-        ),
-        10.heightBox,
-        Row(
-          children: [
-            // HOURS
-            Expanded(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [_buildDigit(context, '0'), _buildDigit(context, '1')],
-                  ),
-                  6.h.heightBox,
-                  Text('Hours', style: AppTextStyles.regularSecondary(context, fontSize: 14)),
-                ],
+          10.heightBox,
+          Row(
+            children: [
+              // HOURS
+              Expanded(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [_buildDigit(context, '0'), _buildDigit(context, '1')],
+                    ),
+                    6.h.heightBox,
+                    Text('Hours', style: AppTextStyles.regularSecondary(context, fontSize: 14)),
+                  ],
+                ),
               ),
-            ),
 
-            // MINUTES
-            Expanded(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [_buildDigit(context, '0'), _buildDigit(context, '4')],
-                  ),
-                  6.h.heightBox,
-                  Text('Minutes', style: AppTextStyles.regularSecondary(context, fontSize: 14)),
-                ],
+              // MINUTES
+              Expanded(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [_buildDigit(context, '0'), _buildDigit(context, '4')],
+                    ),
+                    6.h.heightBox,
+                    Text('Minutes', style: AppTextStyles.regularSecondary(context, fontSize: 14)),
+                  ],
+                ),
               ),
-            ),
 
-            // SECONDS
-            Expanded(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [_buildDigit(context, '1'), _buildDigit(context, '1')],
-                  ),
-                  6.h.heightBox,
-                  Text('Seconds', style: AppTextStyles.regularSecondary(context, fontSize: 14)),
-                ],
+              // SECONDS
+              Expanded(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [_buildDigit(context, '1'), _buildDigit(context, '1')],
+                    ),
+                    6.h.heightBox,
+                    Text('Seconds', style: AppTextStyles.regularSecondary(context, fontSize: 14)),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 

@@ -3,8 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:social_app/core/routes/app_routes.dart';
 import 'package:social_app/core/utils/extentions.dart';
+import 'package:social_app/core/widgets/ui_elevated_button.dart';
 
+import '../../../../../core/di/service_locator.dart';
 import '../../../../../core/theme/app_text_styles.dart';
+import '../../../../../core/theme/theme_controller.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/widgets/ui_svg.dart';
 
@@ -13,6 +16,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeController = getIt<ThemeController>();
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -65,7 +69,7 @@ class ProfileScreen extends StatelessWidget {
                       [
                         [AppAssets.help, 'Help'],
                         [AppAssets.wallet, 'Wallet'],
-                        [AppAssets.activity1, 'Activity'],
+                        [AppAssets.star, 'Favourites'],
                       ].map((item) {
                         final icon = item[0];
                         final text = item[1];
@@ -74,6 +78,12 @@ class ProfileScreen extends StatelessWidget {
                             onTap: () {
                               if (text == 'Help') {
                                 Get.toNamed(AppRoutes.helpCenterScreen);
+                              }
+                              if (text == 'Wallet') {
+                                Get.toNamed(AppRoutes.walletScreen);
+                              }
+                              if (text == 'Favourites') {
+                                Get.toNamed(AppRoutes.favouriteProvidersScreen);
                               }
                             },
                             child: Container(
@@ -94,7 +104,7 @@ class ProfileScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 spacing: 8.h,
                                 children: [
-                                  UISvg(svg: icon, color: context.theme.primaryColor, height: 26.h),
+                                  UISvg(svg: icon, color: context.theme.primaryColor, height: 24.h),
                                   Text(
                                     text,
                                     style: AppTextStyles.regularSecondary(context, fontSize: 16),
@@ -109,16 +119,14 @@ class ProfileScreen extends StatelessWidget {
                 20.heightBox,
                 Text('General', style: AppTextStyles.semiBoldPrimary(context, fontSize: 18)),
                 16.heightBox,
-                GestureDetector(
+                _buildListItem(
                   onTap: () {
                     Get.toNamed(AppRoutes.notificationScreen);
                   },
-                  child: _buildListItem(
-                    context,
-                    AppAssets.bell,
-                    'Notification',
-                    'Turn on or off Notification setting',
-                  ),
+                  context,
+                  AppAssets.bell,
+                  'Notification',
+                  'Turn on or off Notification setting',
                 ),
                 20.heightBox,
                 _buildListItem(context, AppAssets.membership, 'Memberships', 'No Membership Plan'),
@@ -129,9 +137,25 @@ class ProfileScreen extends StatelessWidget {
                 20.heightBox,
                 _buildListItem(context, AppAssets.country, 'Country', 'Change Country'),
                 20.heightBox,
-                _buildListItem(context, AppAssets.theme, 'Theme', 'Change App theme'),
+                _buildListItem(
+                  context,
+                  AppAssets.theme,
+                  'Theme',
+                  'Change App theme',
+                  onTap: () {
+                    _showThemeDialog(context, themeController);
+                  },
+                ),
                 20.heightBox,
-                _buildListItem(context, AppAssets.password, 'Password', 'Set App Password'),
+                _buildListItem(
+                  context,
+                  AppAssets.password,
+                  'Password',
+                  'Set App Password',
+                  onTap: () {
+                    Get.toNamed(AppRoutes.changePasswordScreen);
+                  },
+                ),
                 20.heightBox,
                 _buildListItem(context, AppAssets.logout, 'Logout', null),
                 20.heightBox,
@@ -153,7 +177,15 @@ class ProfileScreen extends StatelessWidget {
                 20.heightBox,
                 Text('Legals', style: AppTextStyles.semiBoldPrimary(context, fontSize: 18)),
                 20.heightBox,
-                _buildListItem(context, AppAssets.privacy, 'Privacy Policy', null),
+                _buildListItem(
+                  context,
+                  AppAssets.privacy,
+                  'Privacy Policy',
+                  null,
+                  onTap: () {
+                    Get.toNamed(AppRoutes.privacyPolicyScreen);
+                  },
+                ),
               ],
             ),
           ),
@@ -162,36 +194,100 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildListItem(BuildContext context, String svg, String title, String? subtitle) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      spacing: 12.w,
-      children: [
-        Container(
-          padding: EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: context.theme.textTheme.labelSmall!.color!),
+  Widget _buildListItem(
+    BuildContext context,
+    String svg,
+    String title,
+    String? subtitle, {
+    VoidCallback? onTap,
+  }) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: onTap,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: 12.w,
+        children: [
+          Container(
+            padding: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: context.theme.textTheme.labelSmall!.color!),
+            ),
+            child: UISvg(svg: svg, color: context.theme.primaryColor),
           ),
-          child: UISvg(svg: svg, color: context.theme.primaryColor),
-        ),
-        if (subtitle != null)
-          Column(
-            spacing: 4.h,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(title, style: AppTextStyles.semiBoldPrimary(context, fontSize: 16)),
-              Text(
-                subtitle,
-                style: AppTextStyles.regularSecondary(context, fontSize: 13, letterSpacing: 0),
-              ),
-            ],
-          )
-        else
-          Text(title, style: AppTextStyles.semiBoldPrimary(context, fontSize: 16)),
-        const Spacer(),
-        Icon(Icons.keyboard_arrow_right_rounded, color: context.theme.textTheme.labelSmall!.color),
-      ],
+          if (subtitle != null)
+            Column(
+              spacing: 4.h,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title, style: AppTextStyles.semiBoldPrimary(context, fontSize: 16)),
+                Text(
+                  subtitle,
+                  style: AppTextStyles.regularSecondary(context, fontSize: 13, letterSpacing: 0),
+                ),
+              ],
+            )
+          else
+            Text(title, style: AppTextStyles.semiBoldPrimary(context, fontSize: 16)),
+          Spacer(),
+          Icon(
+            Icons.keyboard_arrow_right_rounded,
+            color: context.theme.textTheme.labelSmall!.color,
+          ),
+        ],
+      ),
     );
   }
+}
+
+void _showThemeDialog(BuildContext context, ThemeController controller) {
+  Get.defaultDialog(
+    title: 'Choose Theme',
+    titleStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+    titlePadding: EdgeInsets.only(top: 30.h, bottom: 10.h),
+    content: Obx(() {
+      final selected = controller.themeMode.value;
+
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          RadioListTile<ThemeMode>(
+            title: const Text('Light'),
+            value: ThemeMode.light,
+            groupValue: selected,
+            onChanged: (value) {
+              controller.themeMode.value = value!;
+              Get.changeThemeMode(value);
+            },
+          ),
+          RadioListTile<ThemeMode>(
+            title: const Text('Dark'),
+            value: ThemeMode.dark,
+            groupValue: selected,
+            onChanged: (value) {
+              controller.themeMode.value = value!;
+              Get.changeThemeMode(value);
+            },
+          ),
+          RadioListTile<ThemeMode>(
+            title: const Text('System Default'),
+            value: ThemeMode.system,
+            groupValue: selected,
+            onChanged: (value) {
+              controller.themeMode.value = value!;
+              Get.changeThemeMode(value);
+            },
+          ),
+          UIElevatedButton(
+            margin: EdgeInsets.only(top: 15.h, left: 10.w, right: 10.w),
+            text: 'Cancel',
+            onPressed: () {
+              Get.back();
+            },
+          ),
+        ],
+      );
+    }),
+  );
 }

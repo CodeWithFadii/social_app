@@ -21,6 +21,8 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
   bool isTermsExpanded = true;
   bool isLicensesExpanded = true;
 
+  final bool isOnboarding = Get.arguments?['isOnboarding'] ?? false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,33 +92,35 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        child: SafeArea(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              16.heightBox,
-              UIElevatedButton(
-                text: 'Next',
-                onPressed: () {
-                  Get.toNamed(AppRoutes.walletScreen);
-                },
+      bottomNavigationBar: !isOnboarding
+          ? null
+          : Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: SafeArea(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    16.heightBox,
+                    UIElevatedButton(
+                      text: 'Next',
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.walletScreen, arguments: {'isOnboarding': true});
+                      },
+                    ),
+                    8.heightBox,
+                    UIElevatedButton(
+                      text: 'Back',
+                      backgroundColor: AppColors.secondary,
+                      textColor: AppColors.black,
+                      onPressed: () {
+                        Get.back();
+                      },
+                    ),
+                    16.heightBox,
+                  ],
+                ),
               ),
-              8.heightBox,
-              UIElevatedButton(
-                text: 'Back',
-                backgroundColor: AppColors.secondary,
-                textColor: AppColors.black,
-                onPressed: () {
-                  Get.back();
-                },
-              ),
-              16.heightBox,
-            ],
-          ),
-        ),
-      ),
+            ),
     );
   }
 

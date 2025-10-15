@@ -11,8 +11,8 @@ import 'package:social_app/core/widgets/ui_textfield.dart';
 import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/widgets/ui_elevated_button.dart';
 
-class PersonalInfoScreen extends StatelessWidget {
-  const PersonalInfoScreen({super.key});
+class ChangePasswordScreen extends StatelessWidget {
+  const ChangePasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,49 +25,77 @@ class PersonalInfoScreen extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: 20.h),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Personal Info',
-                    style: AppTextStyles.boldPrimary(context, fontSize: 21),
-                  ),
+                Row(
+                  spacing: 16.w,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: UISvg(svg: AppAssets.backButton),
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Change Password',
+                        style: AppTextStyles.boldPrimary(context, fontSize: 21),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 80.h),
                 Text(
-                  'What’s your Name',
+                  'Create New Password',
                   style: AppTextStyles.semiBoldPrimary(context, fontSize: 18),
                 ),
                 50.heightBox,
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'First Name',
+                    'Enter Current Password',
                     style: AppTextStyles.semiBoldPrimary(context, fontSize: 15),
                   ),
                 ),
                 14.heightBox,
                 UITextField(
-                  hint: 'First Name',
+                  hint: '*********',
                   leading: UISvg(
-                    svg: AppAssets.person,
-                    height: 30,
+                    svg: AppAssets.lock,
+                    height: 22,
                     color: context.theme.primaryColor,
                   ),
                 ),
-                20.heightBox,
+                18.heightBox,
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Last Name',
+                    'Enter New Password',
                     style: AppTextStyles.semiBoldPrimary(context, fontSize: 15),
                   ),
                 ),
                 14.heightBox,
                 UITextField(
-                  hint: 'Last Name',
+                  hint: '*********',
                   leading: UISvg(
-                    svg: AppAssets.person,
-                    height: 30,
+                    svg: AppAssets.lock,
+                    height: 22,
+                    color: context.theme.primaryColor,
+                  ),
+                ),
+                18.heightBox,
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Confirm Password',
+                    style: AppTextStyles.semiBoldPrimary(context, fontSize: 15),
+                  ),
+                ),
+                14.heightBox,
+                UITextField(
+                  hint: '*********',
+                  leading: UISvg(
+                    svg: AppAssets.lock,
+                    height: 22,
                     color: context.theme.primaryColor,
                   ),
                 ),
@@ -83,18 +111,9 @@ class PersonalInfoScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               UIElevatedButton(
-                text: 'Next',
+                text: 'Confirm',
                 onPressed: () {
-                  Get.toNamed(AppRoutes.privacyPolicyScreen, arguments: {'isOnboarding': true});
-                },
-              ),
-              8.heightBox,
-              UIElevatedButton(
-                text: 'Back',
-                backgroundColor: AppColors.secondary,
-                textColor: AppColors.black,
-                onPressed: () {
-                  Get.back();
+                  Get.toNamed(AppRoutes.personalInfoScreen);
                 },
               ),
               16.heightBox,

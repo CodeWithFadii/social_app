@@ -49,7 +49,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
         child: SafeArea(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            spacing: 35.w,
             children: List.generate(_navItems.length, (index) {
               final isSelected = _selectedIndex == index;
               final item = _navItems[index];
@@ -57,21 +57,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ? context.theme.primaryColor
                   : context.theme.textTheme.labelSmall!.color;
 
-              return GestureDetector(
-                onTap: () => setState(() => _selectedIndex = index),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    UISvg(svg: item.icon, height: 20.h, color: color),
-                    8.heightBox,
-                    Text(
-                      item.label,
-                      style: AppTextStyles.semiBoldPrimary(
-                        context,
-                        fontSize: 13,
-                      ).copyWith(color: color),
-                    ),
-                  ],
+              return Expanded(
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () => setState(() => _selectedIndex = index),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      UISvg(svg: item.icon, height: 20.h, color: color),
+                      8.heightBox,
+                      Text(
+                        item.label,
+                        style: AppTextStyles.semiBoldPrimary(
+                          context,
+                          fontSize: 13,
+                        ).copyWith(color: color),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }),

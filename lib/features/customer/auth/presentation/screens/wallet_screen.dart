@@ -6,6 +6,7 @@ import 'package:social_app/core/theme/app_colors.dart';
 import 'package:social_app/core/theme/app_text_styles.dart';
 import 'package:social_app/core/utils/app_assets.dart';
 import 'package:social_app/core/utils/extentions.dart';
+import 'package:social_app/core/widgets/ui_elevated_button.dart';
 import 'package:social_app/core/widgets/ui_svg.dart';
 
 class WalletScreen extends StatefulWidget {
@@ -29,6 +30,8 @@ class _WalletScreenState extends State<WalletScreen> with SingleTickerProviderSt
     _tabController.dispose();
     super.dispose();
   }
+
+  final bool isOnboarding = Get.arguments?['isOnboarding'] ?? false;
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +87,15 @@ class _WalletScreenState extends State<WalletScreen> with SingleTickerProviderSt
           ],
         ),
       ),
+      bottomNavigationBar: !isOnboarding
+          ? null
+          : UIElevatedButton(
+              margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+              text: 'Continue',
+              onPressed: () {
+                Get.toNamed(AppRoutes.enableLocationScreen);
+              },
+            ),
     );
   }
 
@@ -181,115 +193,6 @@ class _WalletScreenState extends State<WalletScreen> with SingleTickerProviderSt
           40.heightBox,
           Image.asset(AppAssets.stackCards),
         ],
-      ),
-    );
-  }
-
-  Widget _buildCreditCard({
-    required String cardNumber,
-    required String cardHolder,
-    required String expiryDate,
-    required bool isVisa,
-    required bool isTop,
-  }) {
-    return Container(
-      height: 180.h,
-      width: 280.w,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFF1E3A8A), Color(0xFF1E40AF)],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(12.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withCustomOpacity(0.1),
-            blurRadius: 10,
-            offset: Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(16.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Credit Card',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                Text(
-                  isVisa ? 'VISA' : 'MONO',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            20.heightBox,
-            Container(
-              height: 20.h,
-              width: 30.w,
-              decoration: BoxDecoration(
-                color: Color(0xFFFFD700),
-                borderRadius: BorderRadius.circular(4.r),
-              ),
-              child: Center(
-                child: Container(
-                  height: 15.h,
-                  width: 25.w,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFFFD700),
-                    borderRadius: BorderRadius.circular(2.r),
-                    border: Border.all(color: Colors.white, width: 1),
-                  ),
-                ),
-              ),
-            ),
-            20.heightBox,
-            Text(
-              cardNumber,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
-                letterSpacing: 2,
-              ),
-            ),
-            20.heightBox,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  cardHolder,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                Text(
-                  expiryDate,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
       ),
     );
   }

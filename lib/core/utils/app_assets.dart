@@ -14,6 +14,7 @@ class AppAssets {
   static const String carpenterBg = '$_imagePath/carpenter_bg.jpg';
   static const String electritionBg = '$_imagePath/electrition_bg.jpg';
   static const String plumbingBg = '$_imagePath/plumbing_bg.jpg';
+  static const String map = '$_imagePath/map.webp';
 
   // Icons
   static const String google = '$_iconPath/google.svg';
@@ -80,4 +81,5 @@ class AppAssets {
   static const String work = '$_iconPath/work.svg';
   static const String bell = '$_iconPath/bell.svg';
   static const String privacy = '$_iconPath/privacy.svg';
+  static const String fingerPrint = '$_iconPath/finger_print.svg';
 }

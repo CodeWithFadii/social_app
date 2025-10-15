@@ -68,7 +68,7 @@ class FavouriteProvidersScreen extends StatelessWidget {
                             SlidableAction(
                               // An action can be bigger than the others.
                               onPressed: (value) {
-                                Get.toNamed(AppRoutes.invoiceScreen);
+                                // Get.toNamed(AppRoutes.invoiceScreen);
                               },
                               backgroundColor: context.theme.primaryColor,
                               foregroundColor: Color(0xff4CBB00),
