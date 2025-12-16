@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
-          initialRoute: AppRoutes.splash,
+          initialRoute: AppRoutes.providerLoginScreen,
           getPages: AppPages.pages,
         );
       },

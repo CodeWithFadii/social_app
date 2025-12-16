@@ -82,4 +82,6 @@ class AppAssets {
   static const String bell = '$_iconPath/bell.svg';
   static const String privacy = '$_iconPath/privacy.svg';
   static const String fingerPrint = '$_iconPath/finger_print.svg';
+  static const String service1 = '$_iconPath/services_1.svg';
+  static const String order1 = '$_iconPath/order_1.svg';
 }

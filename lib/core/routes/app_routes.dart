@@ -27,4 +27,5 @@ class AppRoutes {
   static const String rateServiceScreen = '/rate_service_screen';
   static const String providerLoginScreen = '/provider_login_screen';
   static const String changePasswordScreen = '/change_password_screen';
+  static const String providerDashboardScreen = '/provider_dashboard_screen';
 }

@@ -118,7 +118,7 @@ class ProviderLoginScreen extends StatelessWidget {
                 UIElevatedButton(
                   text: 'Login',
                   onPressed: () {
-                    Get.toNamed(AppRoutes.otpVerificationScreen);
+                    Get.offAllNamed(AppRoutes.providerDashboardScreen);
                   },
                 ),
               ],

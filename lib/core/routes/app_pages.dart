@@ -27,6 +27,7 @@ import '../../features/customer/services/presentation/screens/order_details_scre
 import '../../features/customer/services/presentation/screens/provider_profile_screen.dart';
 import '../../features/customer/auth/presentation/screens/wallet_screen.dart';
 import '../../features/provider/auth/presentation/screens/provider_login_screen.dart';
+import '../../features/provider/dashboard/presentation/screens/dashboard_screen.dart';
 import 'app_routes.dart';
 
 class AppPages {
@@ -82,5 +83,6 @@ class AppPages {
     GetPage(name: AppRoutes.rateServiceScreen, page: () => RateServiceScreen()),
     GetPage(name: AppRoutes.providerLoginScreen, page: () => ProviderLoginScreen()),
     GetPage(name: AppRoutes.changePasswordScreen, page: () => ChangePasswordScreen()),
+    GetPage(name: AppRoutes.providerDashboardScreen, page: () => ProviderDashboardScreen()),
   ];
 }
